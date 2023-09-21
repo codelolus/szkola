@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>praca Milosz Parzych</title>
+  </head>
+
+  <body>
+    <from id="form1">
+      <input type="text" id="input" />
+    </from>
+    <button onclick="execute()">Apply</button>
+    <div id="result"></div>
+    <br />
+    <div id="maxValue"></div>
+    <br />
+    <div id="avarageValue"></div>
+    <br />
+    <div id="arrayValues"></div>
+    <br />
+    <div id="arraySorted"></div>
+    <br />
+    <div id="arrayMin3"></div>
+    <br />
+    <div id="arrayMax3"></div>
+    <br />
+    <div id="square"></div>
+  </body>
+  <script>
+    let array = [];
+    array.slice(0, 8);
+    //zad 1
+    if (array.length <= 8) {
+      function execute() {
+        if (array.length < 8) {
+          array.push(parseInt(document.getElementById("input").value));
+          document.getElementById("result").innerHTML =
+            "Lista nie posortowana: " + array + " ";
+        } else {
+          document.getElementById("result").innerHTML =
+            "Nie można podać więcej niż 8 wartości. lista: " + array;
+        }
+        //zad 2
+        let highestValue = Math.max(...array);
+        document.getElementById("maxValue").innerHTML =
+          "Największa wartość w tablicy: " + highestValue;
+
+        //zad 3
+        let avgValue = array.reduce((a, b) => a + b, 0) / array.length;
+        document.getElementById("avarageValue").innerHTML =
+          "średnia wartość elementów tablicy: " + avgValue;
+
+        //zad 4 ilosc trójek
+        const arrayValuess = array.filter((element) => element == "3");
+        document.getElementById("arrayValues").innerHTML =
+          "ilość trójek w tablicy: " + (0 + arrayValuess.length);
+        //zad 5 posortowana
+        document.getElementById("arraySorted").innerHTML =
+          "Lista posortowana: " + array.sort((a, b) => a - b);
+        //zad 6 3 najmniejsze liczby
+        document.getElementById("arrayMin3").innerHTML =
+          "3 najmniejsze liczby: " + array.slice(0, 3);
+        //zad 7 3 największe liczby
+        document.getElementById("arrayMax3").innerHTML =
+          "3 największe liczby: " + array.slice(-3);
+        //zad 8 podniesienie do kwadratu
+        const arraySquare = array.map((x) => x * x);
+        document.getElementById("square").innerHTML =
+          "kwadrat wszystkich liczb w tablicy: " + arraySquare;
+      }
+    }
+  </script>
+</html>
+
+<!-- milosz parzych -->
